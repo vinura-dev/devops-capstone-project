@@ -140,9 +140,9 @@ class TestAccountService(TestCase):
 
     def test_read_an_account(self):
         """It should return an account"""
-        account = self._create_accounts(1)[0] # list
+        account = self._create_accounts(1)[0]
         response = self.client.get(
-            f"{BASE_URL}/{account.id}", 
+            f"{BASE_URL}/{account.id}",
             content_type="application/json"
         )
         self.assertEqual(response.status_code, status.HTTP_200_OK)
@@ -158,7 +158,7 @@ class TestAccountService(TestCase):
         """It should update (email) for an account"""
         account = self._create_accounts(1)[0]
         response = self.client.get(
-            f"{BASE_URL}/{account.id}", 
+            f"{BASE_URL}/{account.id}",
             content_type="application/json"
         )
         response_json = response.get_json()
@@ -170,7 +170,7 @@ class TestAccountService(TestCase):
         )
         self.assertEqual(update_response.status_code, status.HTTP_200_OK)
         updated_response = self.client.get(
-            f"{BASE_URL}/{account.id}", 
+            f"{BASE_URL}/{account.id}",
             content_type="application/json"
         )
         self.assertEqual(response_json['email'], updated_response.get_json()['email'])
@@ -187,11 +187,9 @@ class TestAccountService(TestCase):
         """It should delete an account"""
         response = self.client.get(BASE_URL)
         self.assertEqual(0, len(response.get_json()))
-        
         account = self._create_accounts(1)[0]
         created_response = self.client.get(BASE_URL)
         self.assertEqual(1, len(created_response.get_json()))
-        
         delete_request = self.client.delete(
           f"{BASE_URL}/{account.id}"
         )
