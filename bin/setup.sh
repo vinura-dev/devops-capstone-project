@@ -29,9 +29,15 @@ make db
 echo "Checking the Postgres Docker container..."
 docker ps
 
+echo "Setup Git credentials..."
+git config --global user.name "vinura-dev"
+git config --global user.email "vinura.devinuwara@gmail.com"
+
+
 echo "****************************************"
 echo " Capstone Environment Setup Complete"
 echo "****************************************"
 echo ""
 echo "Use 'exit' to close this terminal and open a new one to initialize the environment"
 echo ""
+
